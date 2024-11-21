@@ -1,0 +1,304 @@
+// Variáveis SCSS
+$light-theme-color: #0a5276;
+$dark-theme-color: #219ef0;
+$light-bg-color: #e1e4e5;
+$dark-bg-color: #05121a;
+$bg-light-color: #fff;
+$bg-primary-theme-color: #821fff;
+$bg-dark-color: #000;
+$bg-gray-theme-color: #dfe1e769;
+$bg-red-darger-color: rgb(255, 59, 48);
+$bg-green-success-color: rgb(52, 199, 89);
+
+// Variáveis CSS opcionais para suporte a temas dinâmicos
+:root {
+  --light-theme-color: #0a5276;
+  --dark-theme-color: #219ef0;
+  --light-bg-color: #e1e4e5;
+  --dark-bg-color: #05121a;
+  --bg-light-color: #fff;
+  --bg-primary-theme-color: #821fff;
+  --bg-dark-color: #000;
+  --bg-gray-theme-color: #dfe1e769;
+  --bg-red-darger-color: rgb(255, 59, 48);
+  --bg-green-success-color: rgb(52, 199, 89);
+}
+
+// Reset global
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+// Estilo do corpo
+body {
+  height: 100vh;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    36deg,
+    rgba(4, 39, 84, 0.559) 0%,
+    rgba(86, 176, 181, 0.223) 35%,
+    $bg-light-color 100%
+  );
+}
+
+// Estilos do cabeçalho
+.my-header {
+  // Aqui você pode adicionar estilos para o header em geral, como background, padding, etc.
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+
+  .nav {
+    display: flex; // Para garantir que os itens fiquem na mesma linha
+    list-style: none; // Remover o estilo padrão da lista
+    padding: 0;
+    margin: 0;
+
+    .nav-item {
+      margin-right: 20px; // Espaçamento entre os itens
+
+      .nav-link {
+        text-decoration: none; // Remover o sublinhado padrão
+        color: #000; // Defina a cor do texto
+        padding: 10px;
+        transition: color 0.3s;
+
+        &:hover {
+          color: #3ab83a; // Cor ao passar o mouse
+        }
+      }
+
+      .nav-link.active {
+        font-weight: bold;
+        color: #146714; // Cor para o item ativo
+      }
+    }
+  }
+}
+
+// Botão social reutilizável
+@mixin button-style($bg-color, $hover-color) {
+  background-color: $bg-color;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-top: 10px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $hover-color;
+  }
+}
+
+// Estilo da seção "view-more"
+.view-more {
+  background-color: #ffffff77;
+  padding: 0 0 15px;
+  border-radius: 20px;
+  max-height: 300px;
+  overflow: hidden;
+  position: relative;
+  transition: max-height 0.5s ease;
+
+  &.view-more--expand {
+    max-height: 1000px;
+    transition: max-height 0.5s ease;
+
+    .view-more__content {
+      max-height: fit-content; // Ajusta o conteúdo ao tamanho natural
+    }
+
+    .view-more-expand {
+      display: none;
+    }
+
+    .view-more-collapse {
+      display: inline-block;
+    }
+  }
+
+  .view-more__content::after {
+    content: "";
+    bottom: 0;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 162px;
+    background: linear-gradient(
+      0deg,
+      $bg-light-color 33.08%,
+      rgba(255, 255, 255, 0) 69.54%
+    );
+    z-index: 0;
+  }
+}
+
+// Botões "view-more"
+.view-more-expand {
+  @include button-style(#007bff, #0056b3);
+}
+
+.view-more-collapse {
+  @include button-style(#007bff, #0056b3);
+}
+
+// Títulos e subtítulos
+.body-title,
+.body-subtitle {
+  text-align: center;
+  color: $light-theme-color;
+
+  &.body-subtitle {
+    font-weight: 200;
+  }
+}
+
+// Estilos da imagem de perfil
+.profile-div {
+  height: 130px;
+  width: fit-content;
+  overflow: hidden;
+  border-radius: 100%;
+  border: 2px solid $light-theme-color;
+  margin: 0 auto;
+
+  .profile-logo {
+    width: 130px !important;
+  }
+}
+
+// Seção de portfólio
+.my-portifolium {
+  width: fit-content;
+  margin: 0 auto;
+
+  button {
+    width: 300px;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    margin-top: 10px;
+  }
+}
+
+// Links de navegação
+.nav-link {
+  color: $light-theme-color !important;
+
+  &.active {
+    background-color: $light-theme-color !important;
+    color: $light-bg-color !important;
+  }
+}
+
+// Botões de redes sociais
+.social-btn {
+  background-color: #d1d7d8;
+  color: $light-theme-color;
+
+  &:hover {
+    background-color: $light-theme-color;
+    color: $light-bg-color;
+    transition: 0.5s;
+  }
+}
+
+// Ícones e elementos decorativos
+.bi-hexagon-fill {
+  color: $light-theme-color;
+  font-size: 35px;
+
+  &:hover {
+    color: #0c7ed5;
+    transition: 0.4s;
+  }
+}
+
+// Estilos para dispositivos móveis e ajustes de layout
+@media screen and (max-width: 1652px) {
+  .send-and-receive-btn {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1335px) {
+  .your-name-on-navbar {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1525px) {
+  .navbar-search {
+    display: none;
+
+    img {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .coluna-2 {
+    display: none;
+    position: relative;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1000px) {
+  .line-right-hi {
+    width: 20%;
+    position: relative;
+    top: 72px;
+    left: 170px !important;
+  }
+
+  .line-left-hi {
+    width: 20%;
+    position: relative;
+    top: 70px;
+    right: 170px !important;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .icon-place-logo-nav,
+  .lupa-mobile-vision-nav {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .cryptoin-logo,
+  .hi-gerald-nav,
+  .maozinha-nav {
+    display: none;
+  }
+
+  .navbar-profile-icon {
+    background-color: transparent !important;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .forgot-hi-welcome,
+  .form-check-input,
+  .form-check-label {
+    position: relative;
+    top: 10px;
+  }
+}
+
+@media screen and (max-width: 485px) {
+  .form-check-input,
+  .form-check-label {
+    display: none;
+  }
+
+  .forgot-hi-welcome {
+    position: relative !important;
+  }
+}
